@@ -65,7 +65,7 @@ public class HuffProcessor {
 		while(true) {
 			int val = in.readBits(BITS_PER_WORD);
 			if(val==-1) {
-				out.writeBits(codings[PSEUDO_EOF].length(), Integer.parseInt(codings[PSEUDO_EOF]));
+				out.writeBits(codings[PSEUDO_EOF].length(), Integer.parseInt(codings[PSEUDO_EOF],2));
 				break;
 			}
 			String code = codings[val];
@@ -79,7 +79,6 @@ public class HuffProcessor {
 	}
 
 	private void writeTree(HuffNode root, BitOutputStream out) {
-		
 		if(root.myLeft==null && root.myRight==null) { //not a leaf
 			out.writeBits(1, 1);
 			out.writeBits(BITS_PER_WORD+1, root.myValue);
