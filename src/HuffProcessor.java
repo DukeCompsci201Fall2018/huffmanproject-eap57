@@ -74,7 +74,6 @@ public class HuffProcessor {
 	}
 
 	private void writeHeader(HuffNode root, BitOutputStream out) {
-		out.writeBits(32,HUFF_TREE);
 		writeTree(root,out);
 	}
 
